@@ -3,6 +3,8 @@ import App from './App'
 
 new Vue({
     el: document.querySelector('#app') as Element,
-    components: { App },
-    render: h => h('App')
+    components: {App},
+    render (h) {
+        return h('App', { attrs:{ start: 100, someString: ' - counter.'} })
+    }
 })

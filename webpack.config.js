@@ -18,15 +18,25 @@ let config = {
     module: {
         rules: [{
                 test: /\.ts$/,
-                loader: 'ts-loader',
-                options: {
-                    appendTsSuffixTo: [/\.vue$/]
-                }
+                use: [{
+                        loader: 'ts-vue-loader'
+                    },
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [/\.vue$/]
+                        }
+                    }]
             },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
-            }]
+            },
+            {
+                test: /\.html$/,
+                use: 'vue-template-loader'
+            }
+        ]
     },
     plugins: [
         new VueLoaderPlugin()
